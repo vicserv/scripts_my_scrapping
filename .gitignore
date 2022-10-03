@@ -1,3 +1,10 @@
 /node_modules/
-/images/
-/m3u/
+/images/*png
+/images/*jpg
+/images/*gif
+/images/*ico
+/images/*svg
+/images/*bmp
+/images/*tiff
+/images/*tif
+/m3u/*.m3u

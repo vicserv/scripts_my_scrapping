@@ -38,24 +38,20 @@ const main = async (uid) => {
         });
 
         // Save result of Promesa
-        const result = await promesa;
+        await promesa;
 
         // Verify result of Promesa
-        if (result === 'success') {
-            radios.push(response);
-            fs.writeFileSync('radios.json', JSON.stringify(radios));
+        radios.push(response);
+        fs.writeFileSync('radios.json', JSON.stringify(radios));
 
-            // Download the image
-            await axios.get(Image, { responseType: 'stream' }).then(response => {
-                response.data.pipe(fs.createWriteStream(`./images/${uid}.${extension}`));
-            }).catch(error => {
-                console.log('error image ' + uid);
-            });
+        // Download the image
+        await axios.get(Image, { responseType: 'stream' }).then(response => {
+            response.data.pipe(fs.createWriteStream(`./images/${uid}.${extension}`));
+        }).catch(error => {
+            console.log('error image ' + uid);
+        });
 
-            console.log('station saved ', uid);
-        } else {
-            console.log(`status error `, uid)
-        }
+        console.log('station saved ', uid);
 
     } catch (error) {
     }
